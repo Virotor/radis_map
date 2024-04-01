@@ -15,6 +15,7 @@ public class Main {
         System.out.println(redisMap.size());
         System.out.println(redisMap.isEmpty());
         System.out.println(redisMap.get("foo"));
+        System.out.println(redisMap.put("foo", "mother"));
         System.out.println(redisMap.put("mama", "father"));
     }
 }
