@@ -15,13 +15,19 @@ public class RedisTest {
 
     private static RedisMap redisMap;
 
-    String value = "value";
-    String key = "key";
+    static  String value;
+    static  String key;
 
-    String invalidKey = "key1";
+    static String nullString;
+
+    static String invalidKey;
 
     @BeforeAll
     public static void setRedis() {
+        value = "value";
+        key = "key";
+        invalidKey = "key1";
+        nullString = null;
         redisMap =  new RedisMap();
         ConnectorToRedis.getInstance(new JedisPool("localhost", 6379));
 
@@ -33,14 +39,14 @@ public class RedisTest {
     @Test
     public void testNullPointer() {
         NullPointerException nullPointerException = Assertions.assertThrows(NullPointerException.class,
-                () -> redisMap.put(null, value)
+                () -> redisMap.put(nullString, value)
         );
         Assertions.assertEquals(nullPointerException.getClass(), NullPointerException.class);
     }
     @Test
     public void testNullPointerValueAndKey() {
         NullPointerException nullPointerException = Assertions.assertThrows(NullPointerException.class,
-                () -> redisMap.put(null, null)
+                () -> redisMap.put(nullString, nullString)
         );
         Assertions.assertEquals(nullPointerException.getClass(), NullPointerException.class);
     }
@@ -48,7 +54,7 @@ public class RedisTest {
     public void testNullPointerValue() {
 
         NullPointerException nullPointerException = Assertions.assertThrows(NullPointerException.class,
-                () -> redisMap.put(key, null)
+                () -> redisMap.put(key, nullString)
         );
         Assertions.assertEquals(nullPointerException.getClass(), NullPointerException.class);
     }
@@ -64,7 +70,7 @@ public class RedisTest {
     public void testNullPointerExceptionKeyGet() {
 
         NullPointerException nullPointerException = Assertions.assertThrows(NullPointerException.class,
-                () -> redisMap.get(null)
+                () -> redisMap.get(nullString)
         );
         Assertions.assertEquals(nullPointerException.getClass(), NullPointerException.class);
     }

@@ -95,14 +95,4 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>csv_reader_writer-mvn-repo</id>
-            <url>https://raw.github.com/Virotor/csv_reader_writer/mvn-repo/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>
